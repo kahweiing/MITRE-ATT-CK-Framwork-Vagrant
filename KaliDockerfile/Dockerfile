@@ -1,0 +1,7 @@
+FROM kalilinux/kali-rolling
+
+RUN apt-get update
+RUN apt-get install -y net-tools
+RUN apt-get install iputils-ping -y
+
+ENTRYPOINT ["tail", "-f", "/dev/null"]
