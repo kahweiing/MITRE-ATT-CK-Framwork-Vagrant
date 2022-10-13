@@ -134,19 +134,6 @@ while($row=mysqli_fetch_array($query))
 <li class="nav-item">
 <a class="nav-link active" data-toggle="tab" href="#general" role="tab">General</a>
 </li>
-<!-- <li class="nav-item">
-<a class="nav-link" data-toggle="tab" href="#repair" role="tab">Repair</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" data-toggle="tab" href="#invoice" role="tab">Invoice</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" data-toggle="tab" href="#sms" role="tab">SMS</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" data-toggle="tab" href="#payment" role="tab">Payment</a>
-</li> -->
-
 </ul>
 
 <div class="tab-content tabs card-block">

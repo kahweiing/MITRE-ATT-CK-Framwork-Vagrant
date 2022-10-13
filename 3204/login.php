@@ -196,6 +196,4 @@ while($row=mysqli_fetch_array($query))
 
 
 </body>
-
-<!-- for any PHP, Codeignitor or Laravel work contact me at mayuri.infospace@gmail.com -->
 </html>

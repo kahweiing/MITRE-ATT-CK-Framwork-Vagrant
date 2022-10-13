@@ -39,7 +39,6 @@
             </a>
         </li>
     <?php } ?>
-
     </ul>
 </li>
 <?php } ?>
@@ -59,8 +58,6 @@
     </ul>
 </li>
 <?php } ?>
-
-
 
 
 <?php if(($_SESSION['user'] == 'admin')) { ?>
@@ -86,8 +83,6 @@
 </li>
 <?php } ?>
 
-
-
 <?php if($_SESSION['user'] == 'admin') { ?>
 <li class="pcoded-hasmenu">
     <a href="javascript:void(0)">
@@ -111,8 +106,6 @@
 </li>
 <?php } ?>
 
-
-
 <!-- <li class="">
 <a href="setting.php">
 <span class="pcoded-micon"><i class="feather icon-bookmark"></i></span>
@@ -128,3 +121,4 @@
 </ul>
 </div>
 </nav>
+

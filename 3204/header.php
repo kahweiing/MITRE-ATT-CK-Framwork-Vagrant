@@ -1,4 +1,4 @@
- <?php include('connect.php');?>
+<?php include('connect.php');?>
 <body>
 <?php
 $que="select * from manage_website";
@@ -76,8 +76,6 @@ while($row=mysqli_fetch_array($query))
 </a>
 </div>
 <div class="navbar-container container-fluid">
-<ul class="nav-left">
-</ul>
 <ul class="nav-right">
 
 <li class="user-profile header-notification" >

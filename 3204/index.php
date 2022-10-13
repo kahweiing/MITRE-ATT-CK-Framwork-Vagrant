@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <?php require_once('check_login.php');?>
@@ -124,7 +123,6 @@ $row_manage = mysqli_fetch_array($result_manage);
 </div>
 </div>
 </div>
-
 <?php } ?>
 
 </div>
