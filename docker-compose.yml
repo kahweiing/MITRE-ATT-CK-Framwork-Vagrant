@@ -1,6 +1,37 @@
 version: "2.1"
+
 services:
   ubuntu:
+    container_name: Victim
     build: ./Ubuntu
   kali: 
+    container_name: Attacker
     build: ./KaliDockerfile
+  ubuntu2: 
+    container_name: Logging_Server
+    build: ./Ubuntu
+  webserver:
+     container_name: WebServer
+     build: ./WebServer
+     ports: 
+       - "8000:80"
+       - "3306:3306"
+     networks:
+       appnet:
+          ipv4_address: 172.24.2.2
+
+     volumes:
+       - ./Webpage:/var/www/html
+
+     
+      
+networks:
+    appnet:
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: "172.24.2.0/16"
+
+volumes:
+  Webpage:
