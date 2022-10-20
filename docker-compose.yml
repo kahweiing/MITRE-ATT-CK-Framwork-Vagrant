@@ -1,30 +1,58 @@
 version: "2.1"
 
 services:
-  ubuntu:
-    container_name: Victim
-    build: ./Ubuntu
   kali: 
     container_name: Attacker
     build: ./KaliDockerfile
-  ubuntu2: 
-    container_name: Logging_Server
-    build: ./Ubuntu
+    networks:
+       appnet:
+          ipv4_address: 172.24.2.11
+    volumes:
+      - ./Wordlists:/usr/share/wordlists/dirbuster
+      - ./AttackScript:/tmp
+
   webserver:
      container_name: WebServer
      build: ./WebServer
      ports: 
        - "8000:80"
-       - "3306:3306"
+      #  - "3306:3306"
      networks:
        appnet:
-          ipv4_address: 172.24.2.2
-
+          ipv4_address: 172.24.2.100
      volumes:
-       - ./Webpage:/var/www/html
+       - ./WebpageFiles:/var/www/html
 
-     
-      
+  mariadb:
+      container_name: db
+      image: "mariadb:10.0"
+      restart: 'always'
+      command: '--default-authentication-plugin=mysql_native_password'
+      environment:
+        MYSQL_ROOT_PASSWORD: "password"
+        MYSQL_USER: "test"
+        MYSQL_PASSWORD: "test"     
+      ports:
+        - "3306:3306"   
+      volumes:
+        - ./DBConfigFiles/3204.sql:/docker-entrypoint-initdb.d/3204.sql
+      networks:
+        appnet:
+            ipv4_address: 172.24.2.101
+
+  elk:
+    container_name: elkStack
+    image: sebp/elk
+    mem_reservation: 4g
+    ports:
+      - "5601:5601"
+      - "9200:9200"
+      - "5044:5044"
+    environment:
+      ES_JAVA_OPTS: "-Xms200m -Xmx200m -XX:MaxDirectMemorySize=55m" 
+      ES_HEAP_SIZE: "2g"
+      LS_HEAP_SIZE: "1g"
+
 networks:
     appnet:
         driver: bridge
@@ -34,4 +62,6 @@ networks:
                 - subnet: "172.24.2.0/16"
 
 volumes:
-  Webpage:
+  WebpageFiles:
+  DBConfigFiles:
+  elkFiles:

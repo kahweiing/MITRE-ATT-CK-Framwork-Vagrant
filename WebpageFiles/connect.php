@@ -1,7 +1,7 @@
 <?php
 /* Local Database*/
 
-$servername = "localhost";
+$servername = "172.24.2.101";
 $username = "root";
 $password = "password";
 $dbname = "clinic_db";
