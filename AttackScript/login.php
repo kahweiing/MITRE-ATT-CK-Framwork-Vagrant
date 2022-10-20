@@ -10,10 +10,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="description" content="#">
-<meta name="keywords" content="Admin , Responsive">
-<meta name="author" content="Nikhil Bhalerao +919423979339.">
-
 
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
 
@@ -173,7 +169,7 @@ while($row=mysqli_fetch_array($query))
       <span class="form-bar"></span>
     </div>
     <div class="form-group form-primary">
-      <input type="email" name="email" class="form-control" required="" placeholder="Email">
+      <input name="email" class="form-control" required="" placeholder="Email">
       <span class="form-bar"></span>
     </div>
     <div class="form-group form-primary">
@@ -224,6 +220,4 @@ while($row=mysqli_fetch_array($query))
 
 
 </body>
-
-<!-- for any PHP, Codeignitor or Laravel work contact me at mayuri.infospace@gmail.com -->
 </html>
