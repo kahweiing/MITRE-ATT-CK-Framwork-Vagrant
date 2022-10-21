@@ -50,29 +50,6 @@ if(isset($_POST['btn_login']))
      $_SESSION["lname"] = $row['lname'];
      $_SESSION['image'] = $row['image'];
      $_SESSION['user'] = $_POST['user'];
-  }else if($_POST['user'] == 'doctor'){    
-    $sql = "SELECT * FROM doctor WHERE loginid='" .$email . "' and password = '". $pass."'";
-    $result = mysqli_query($conn,$sql);
-    $row  = mysqli_fetch_array($result);
-    //print_r($row);
-
-$_SESSION["doctorid"] = $row['doctorid'];
-     $_SESSION["id"] = $row['doctorid'];
-     $_SESSION["password"] = $row['password'];
-     $_SESSION["email"] = $row['loginid'];
-     $_SESSION["fname"] = $row['doctorname'];
-     $_SESSION['user'] = $_POST['user'];
-  }else if($_POST['user'] == 'patient'){    
-    $sql = "SELECT * FROM patient WHERE loginid='" .$email . "' and password = '". $pass."'";
-    $result = mysqli_query($conn,$sql);
-    $row  = mysqli_fetch_array($result);
-    //print_r($row);    
-    $_SESSION["patientid"] = $row['patientid'];
-     $_SESSION["id"] = $row['patientid'];
-     $_SESSION["password"] = $row['password'];
-     $_SESSION["email"] = $row['loginid'];
-     $_SESSION["fname"] = $row['patientname'];
-     $_SESSION['user'] = $_POST['user'];
   }
     //print_r($row);
      $count=mysqli_num_rows($result);
@@ -161,10 +138,7 @@ while($row=mysqli_fetch_array($query))
   <form method="POST" >
     <div class="form-group form-primary">
       <select name="user" class="form-control" required="">
-        <option value="">-- Select One --</option>
         <option value="admin">Admin</option>
-        <option value="doctor">Doctor</option>
-        <option value="patient">Patient</option>
       </select>
       <span class="form-bar"></span>
     </div>
