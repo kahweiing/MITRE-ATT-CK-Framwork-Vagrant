@@ -12,8 +12,18 @@ RUN apt-get --assume-yes install rsyslog
 RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1000 test 
 RUN echo 'test:test' | chpasswd
 RUN service ssh start
-RUN service apache2 start  
+RUN service apache2 start
+RUN service cron start   
 
+# Copy backup script to docker container.
+COPY ["backup.sh", "/backups/"]
+RUN chmod 0744 /backups/backup.sh
+
+# Create the log file to be able to run tail
+RUN touch /var/log/cron.log
+
+RUN (crontab -l -u root; echo "* * * * * /backups/backup.sh") | crontab
+RUN sed -ri 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
 RUN curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-8.4.3-amd64.deb
 RUN sudo dpkg -i filebeat-8.4.3-amd64.deb
@@ -34,4 +44,4 @@ EXPOSE 80
 
 # CMD ["/usr/sbin/sshd","-D"]
 # CMD ["/usr/sbin/apachectl", "-D", "FOREGROUND"]
-CMD service ssh start && service apache2 start && service rsyslog start && service initFilebeat start && tail -F /dev/null
+CMD service ssh start && service apache2 start && cron && service rsyslog start && service initFilebeat start && tail -F /var/log/cron.log
