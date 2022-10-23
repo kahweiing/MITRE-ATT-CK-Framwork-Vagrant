@@ -6,7 +6,9 @@ RUN apt-get install iputils-ping -y
 RUN apt-get --assume-yes install nano
 RUN apt-get install net-tools
 RUN apt-get --assume-yes install python3
+RUN apt-get --assume-yes install sudo
 RUN apt-get --assume-yes install openssh-server
+RUN apt-get --assume-yes install systemctl
 RUN apt-get --assume-yes install python3-pip
 RUN apt-get install -y netcat-traditional
 RUN pip install requests
