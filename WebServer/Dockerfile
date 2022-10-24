@@ -42,6 +42,4 @@ RUN filebeat modules enable apache
 EXPOSE 22
 EXPOSE 80
 
-# CMD ["/usr/sbin/sshd","-D"]
-# CMD ["/usr/sbin/apachectl", "-D", "FOREGROUND"]
 CMD service ssh start && service apache2 start && cron && service rsyslog start && service initFilebeat start && tail -F /var/log/cron.log

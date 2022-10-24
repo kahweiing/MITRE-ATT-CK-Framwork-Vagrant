@@ -29,17 +29,21 @@ services:
 
   mariadb:
       container_name: db
-      image: "mariadb:10.0"
+      hostname: db
+      build: ./DBConfigFiles
       restart: 'always'
       command: '--default-authentication-plugin=mysql_native_password'
       environment:
         MYSQL_ROOT_PASSWORD: "password"
-        MYSQL_USER: "test"
-        MYSQL_PASSWORD: "test"     
+        # MYSQL_USER: "test"
+        # MYSQL_PASSWORD: "test"     
       ports:
         - "3306:3306"   
       volumes:
         - ./DBConfigFiles/3204.sql:/docker-entrypoint-initdb.d/3204.sql
+      depends_on:
+        elk:
+          condition: service_healthy
       networks:
         appnet:
             ipv4_address: 172.24.2.101
